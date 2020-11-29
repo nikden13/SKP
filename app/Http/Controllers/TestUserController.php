@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\Test;
 use Exception;
 use Illuminate\Database\QueryException;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 class TestUserController extends Controller
 {
 
-    public function add_user(Test $test)
+   /* public function add_user(Test $test)
     {
         $user_tests = auth()->user()->tests;
         foreach ($user_tests as $user_test) {
@@ -20,13 +21,24 @@ class TestUserController extends Controller
         }
         auth()->user()->tests()->attach($test);
         return response()->json(['message' => 'You have been added to the test'],200);
-    }
+    }*/
 
-
-
-    public function add_answers_user(Test $test, Request $request)
+   /* public function show_users_from_test(Test $test)
     {
+        $users = $test->users
+            ->where('pivot.role', 'participant')
+            ->values();
+        $array=['id' => []];
+        foreach ($users as $user) {
+            array_push($array['id'], $user['id']);
+            //unset($user['pivot']);
+        }
+        return response()->json($array,200);
+    }*/
 
+    public function add_answers_user(Event $event, Request $request)
+    {
+        $test = $event->test;
         $true_answers = $this->select_true_answers($test);          //получение правильных ответов
         $set_id = $this->select_id_questions($true_answers);                //получение id вопросов в тесте
 
@@ -39,9 +51,9 @@ class TestUserController extends Controller
         foreach ($user_tests as $user_test) {
             if ($user_test->pivot->role == 'participant' && $user_test->pivot->test_id == $test->id) {  //является ли участником теста
 
-                $count_true_answers = $this->check_answers($set_id, $true_answers, $user_answers, $count_qustions); //проверка ответов
+                $count_true_answers = $this->check_answers($set_id, $true_answers, $user_answers); //проверка ответов
                 if ($count_true_answers >= $count_qustions * 0.8)
-                    $user->tests()->updateExistingPivot($test, ['presence' => true]);
+                    $user->events()->updateExistingPivot($event, ['presence' => true]);
 
                 foreach ($user_answers as $answer) {    //сохранение ответов
                     try {
@@ -56,19 +68,6 @@ class TestUserController extends Controller
         return response()->json(['message' => 'You are not a participant in this test'],400);
     }
 
-    public function show_users_from_test(Test $test)
-    {
-        $users = $test->users
-            ->where('pivot.role', 'participant')
-            ->values();
-        $array=['id' => []];
-        foreach ($users as $user) {
-            array_push($array['id'], $user['id']);
-            //unset($user['pivot']);
-        }
-        return response()->json($array,200);
-    }
-
     private function select_true_answers(Test $test)
     {
         $true_answers = collect([]);
@@ -81,6 +80,7 @@ class TestUserController extends Controller
         }
         return $true_answers;
     }
+
     private function select_id_questions($true_answers)
     {
         $set_id = [];
@@ -91,7 +91,7 @@ class TestUserController extends Controller
         return $set_id;
     }
 
-    private function check_answers($set_id, $true_answers, $user_answers, $count_qustions)
+    private function check_answers($set_id, $true_answers, $user_answers)
     {
         $count_true_answers = 0;
         foreach ($set_id as $id) {

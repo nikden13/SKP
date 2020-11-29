@@ -13,9 +13,24 @@ class Event extends Model
         'update_at',
     ];
 
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
+
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('role', 'qr_code', 'presence');
+        return $this->belongsToMany(User::class)->withPivot('role', 'code', 'presence');
+    }
+
+    public function test()
+    {
+        return $this->hasOne(Test::class);
+    }
+
+    public function code()
+    {
+        return $this->hasOne(Code::class);
     }
 
 }

@@ -5,19 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Test extends Model
+class Code extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'time_limit',
+        'code',
     ];
 
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
-    }
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+    ];
 
     public function event()
     {

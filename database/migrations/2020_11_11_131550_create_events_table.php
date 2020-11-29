@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->date('date');
             $table->time('time_start');
             $table->time('time_end');
-            $table->string('qr_code');
+            $table->string('check_type');
             $table->timestamps();
         });
     }

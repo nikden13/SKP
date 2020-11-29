@@ -14,10 +14,9 @@ class CreateEventUserTable extends Migration
     public function up()
     {
         Schema::create('event_user', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('event_id');
-            $table->string('qr_code')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('event_id');
+            $table->string('code')->nullable();
             $table->string('role')->default('participant');
             $table->boolean('presence')->default('false');
             $table->timestamps();
@@ -28,6 +27,8 @@ class CreateEventUserTable extends Migration
             $table->foreign('event_id')
                 ->references('id')->on('events')
                 ->onDelete('cascade');
+
+            $table->primary(['user_id', 'event_id']);
         });
     }
 

@@ -24,12 +24,7 @@ class User extends Authenticatable
 
     public function events()
     {
-        return $this->belongsToMany(Event::class)->withPivot('role', 'qr_code', 'presence');
-    }
-
-    public function tests()
-    {
-        return $this->belongsToMany(Test::class)->withPivot('role', 'presence');
+        return $this->belongsToMany(Event::class)->withPivot('role', 'code', 'presence');
     }
 
     public function questions()
