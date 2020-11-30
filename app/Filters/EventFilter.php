@@ -24,6 +24,7 @@ class EventFilter extends QueryFilter
 
     protected function date($value)
     {
+        $value = str_replace('/', '-', $value); //можно убрать
         $this->builder = $this->builder->where('date', $value);
     }
 

@@ -13,11 +13,10 @@ class TestController extends Controller
         if (!$test) {
             return response()->json(['message' => 'Test not exists'], 200);
         }
-        $test->questions;
-        /*$questions = $test->questions;
-        /*foreach ($questions as $question) {
+        $questions = $test->questions;
+        foreach ($questions as $question) {
             $question->answers;
-        }*/ //добавить для возврата ответов
+        }
         return response()->json($test, 200);
     }
 

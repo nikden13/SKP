@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
-Route::post('logout', 'AuthController@logout')->middleware('auth:api');
+Route::post('logout', 'AuthController@logout')
+    ->middleware('auth:api');
 
 Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function() {
     Route::get('', 'UserController@show');
@@ -13,14 +14,31 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function() {
     Route::delete('', 'UserController@destroy');
 });
 
-Route::apiResource('events','EventController')->middleware('auth:api');
-Route::group(['prefix' => 'events', 'middleware' => 'auth:api'], function() {
-    Route::get('{event}/users', 'EventUserController@show_users_from_event');
-    Route::get('{event}/visitors', 'VisitedController');
-    Route::get('{event}/test', 'TestController@show');
-    Route::post('{event}/users', 'EventUserController@add_user');
-    Route::post('{event}/code', 'EventUserController@add_code_user');
-    Route::post('{event}/answers', 'EventUserController@add_answers_user');
+Route::apiResource('events','EventController')
+    ->except('store', 'create')
+    ->middleware('auth:api');
+
+//только для создателя
+Route::group(['prefix' => 'events', 'middleware' => ['auth:api', 'isCreator']], function() {
+    Route::post('', 'EventController@store');
+    Route::put('{event}', 'EventController@udpate');
+});
+
+Route::group(['prefix' => 'events/{event}', 'middleware' => 'auth:api'], function() {
+    Route::get('users', 'EventUserController@show_users_from_event');
+    Route::get('visitors', 'VisitedController')
+        ->middleware('isCreator');          //только для создателя
+    Route::get('test', 'TestController@show')
+        ->middleware('isParticipant');      //только для создателя или участника
+    Route::post('users', 'EventUserController@add_user');
+
+    //только для создателя или участника и если проверка qr или каптча
+    Route::post('code', 'EventUserController@add_code_user')
+        ->middleware(['isCreator', 'isCode']);
+
+    //только для создателя или участника и если проверка тест
+    Route::post('answers', 'EventUserController@add_answers_user')
+        ->middleware(['isCreator','isTest']);
 });
 
 

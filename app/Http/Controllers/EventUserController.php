@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnswerRequest;
 use App\Models\Event;
 use App\Models\Test;
+use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,9 @@ class EventUserController extends Controller
         if ($user) {
             $isSubscribed = true;
         }
-        $users = $event->users;
+        $users = $event->users
+            ->sortBy('pivot.role')
+            ->values();
         foreach ($users as $user) {
             unset($user['pivot']);
         }
@@ -38,26 +41,19 @@ class EventUserController extends Controller
     public function add_code_user(Event $event, Request $request)
     {
         $user = auth()->user();
-        $user_event = $user->events->where('pivot.event_id', $event->id)->first();
-        if ($user_event) {
-            $qr_user = $request->input('code');
-            $qr_event = $event->code()->find($event->id)->only('code');
-            if ($qr_event['code'] == $qr_user) {
-                $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => true]);
-            } else {
-                $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => false]);
-            }
-            return response()->json(['message' => 'Answer added successfully'], 200);
+        $qr_user = $request->input('code');
+        $qr_event = $event->code()->find($event->id)->only('code');
+        if ($qr_event['code'] == $qr_user) {
+            $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => true]);
+        } else {
+            $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => false]);
         }
-        return response()->json(['message' => 'You are not a participant in this event'],400);
+        return response()->json(['message' => 'Answer added successfully'], 200);
     }
 
     public function add_answers_user(Event $event, AnswerRequest $request)
     {
         $test = $event->test;
-        if (!$test) {
-            return response()->json(['message' => 'Test not exists'], 400);
-        }
         $true_answers = $this->select_true_answers($test);          //получение правильных ответов
         $set_id = $this->select_id_questions($true_answers);                //получение id вопросов в тесте
 
@@ -66,23 +62,18 @@ class EventUserController extends Controller
         $user_answers = collect($request->input('answers'));    //ответы пользователя
 
         $user = auth()->user();
-        $user_event = $user->events->where('pivot.event_id', $event->id)->first();  //является ли участником теста
-        if ($user_event) {                                                          //является ли участником теста
-            foreach ($user_answers as $answer) {    //сохранение ответов
-                try {
-                    $user->questions()->attach($answer['question_id'], ['text' => $answer['text']]);
-                } catch (QueryException $e) {
-                    return response()->json(['message' => 'Not found question'], 400);
-                }
+        foreach ($user_answers as $answer) {    //сохранение ответов
+            try {
+                $user->questions()->attach($answer['question_id'], ['text' => $answer['text']]);
+            } catch (QueryException $e) {
+                return response()->json(['message' => 'Not found question'], 400);
             }
-
-            $count_true_answers = $this->check_answers($set_id, $true_answers, $user_answers); //проверка ответов
-            if ($count_true_answers >= $count_qustions * 0.8)
-                $user->events()->updateExistingPivot($event, ['presence' => true]);
-
-            return response()->json(['message' => 'Answers added successfully'], 200);
         }
-        return response()->json(['message' => 'You are not a participant in this test'],400);
+
+        $count_true_answers = $this->check_answers($set_id, $true_answers, $user_answers); //проверка ответов
+        if ($count_true_answers >= $count_qustions * 0.8)
+            $user->events()->updateExistingPivot($event, ['presence' => true]);
+        return response()->json(['message' => 'Answers added successfully'], 200);
     }
 
     private function select_true_answers(Test $test)
@@ -119,15 +110,11 @@ class EventUserController extends Controller
             }
             $trueAnswers_text = collect([]);
             $userAnswers_text = collect([]);
-            try {
-                foreach ($trueAnswers_for_question as $item) {
-                    $trueAnswers_text->push((string)$item['text']);
-                }
-                foreach ($userAnswers_for_question as $item) {
-                    $userAnswers_text->push((string)$item['text']);
-                }
-            } catch(Exception $e) {
-                return response()->json(['message' => 'Missing text field'], 400);
+            foreach ($trueAnswers_for_question as $item) {
+                $trueAnswers_text->push((string)$item['text']);
+            }
+            foreach ($userAnswers_for_question as $item) {
+                $userAnswers_text->push((string)$item['text']);
             }
             foreach ($trueAnswers_text as $item) {
                 if ($userAnswers_text->contains($item)) {
@@ -137,8 +124,9 @@ class EventUserController extends Controller
                 }
                 break;
             }
-            if ($userAnswers_text->isEmpty())
+            if ($userAnswers_text->isEmpty()) {
                 $count_true_answers++;
+            }
         }
         return $count_true_answers;
     }
