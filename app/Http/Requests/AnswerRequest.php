@@ -2,8 +2,10 @@
 
 namespace App\Http\Requests;
 
+
 class AnswerRequest extends ApiFormRequest
 {
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -12,8 +14,9 @@ class AnswerRequest extends ApiFormRequest
     public function rules()
     {
         return [
-            'text' => 'required',
-            'true_false' => 'required|boolean',
+            'answers' => 'required|array',
+            'answers.*.question_id' => 'required|integer|gte:0',
+            'answers.*.text' => 'required',
         ];
     }
 }

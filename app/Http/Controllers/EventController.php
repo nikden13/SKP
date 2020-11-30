@@ -13,8 +13,18 @@ class EventController extends Controller
     public function index(Request $request)
     {
         $builder = Event::all()->sortBy($request->input('sort_by'));
-        $event = (new EventFilter($builder, $request))->apply();
-        return response()->json($event->values()->all(), 200);
+        $events = (new EventFilter($builder, $request))->apply();
+        $events_with_creator = [];
+        foreach ($events as $event) {
+            $creator = $event->users
+                ->where('pivot.role', 'creator')
+                ->first()
+                ->only(['first_name', 'second_name', 'middle_name']);
+            array_push($events_with_creator, collect($event)
+                ->except('users')
+                ->union(['creator' => $creator]));
+        }
+        return response()->json($events_with_creator, 200);
     }
 
     public function show(Event $event)
@@ -41,17 +51,22 @@ class EventController extends Controller
 
     public function update(Event $event, EventRequest $request)
     {
-        $event->update($request->all());
-        if ($event->check_tipe != 'test' && $request->input('check_type') == 'test') {
+        if ($event->check_type != 'test' && $request->input('check_type') == 'test') {
+            $event->update($request->all());
             $event->code()->delete();
             $this->create_test($event, $request);
-        } elseif ($event->check_tipe == 'test' && $request->input('check_type') != 'test') {
+        } elseif ($event->check_type == 'test' && $request->input('check_type') != 'test') {
+            $event->update($request->all());
             $event->test()->delete();
             $this->create_code($event, $request);
-        } elseif ($event->check_tipe == 'test' && $request->input('check_type') == 'test') {
-            $this->update_test($event, $request);
+        } elseif ($event->check_type == 'test' && $request->input('check_type') == 'test') {
+            $event->update($request->all());
+            $event->test()->delete();
+            $this->create_test($event, $request);
         } else {
-            $this->update_code($event, $request);
+            $event->update($request->all());
+            $event->code()->delete();
+            $this->create_code($event, $request);
         }
         return response()->json(Event::find($event->id),200);
     }
@@ -64,7 +79,7 @@ class EventController extends Controller
 
     private function create_code($event, $request)
     {
-        $event->code()->create($request->all());
+        $event->code()->create(['code' => $request->input('code')]);
     }
 
     private function create_test($event, $request)
@@ -77,25 +92,6 @@ class EventController extends Controller
             $save_question = $test->questions()->create($question);
             foreach ($question['answers'] as $answer) {
                 $save_question->answers()->create($answer);
-            }
-        }
-    }
-
-    private function update_code($event, $request)
-    {
-        $event->code()->update($request->all());
-    }
-
-    private function update_test($event, $request)
-    {
-        $test = $event->test()->update([
-            'name' => $request->input('test.name'),
-            'time_limit' => $request->input('test.time_limit'),
-        ]);
-        foreach ($request->input('test.questions') as $question) {
-            $save_question = $test->questions()->update($question);
-            foreach ($question['answers'] as $answer) {
-                $save_question->answers()->update($answer);
             }
         }
     }

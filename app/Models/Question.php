@@ -10,7 +10,7 @@ class Question extends Model
     use HasFactory;
 
     protected $fillable = [
-        'text'
+        'text',
     ];
 
     protected $hidden = [

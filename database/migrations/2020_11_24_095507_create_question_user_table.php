@@ -18,7 +18,6 @@ class CreateQuestionUserTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('question_id');
             $table->string('text');
-            $table->boolean('true_false')->default('false');
             $table->timestamps();
 
             $table->foreign('question_id')
