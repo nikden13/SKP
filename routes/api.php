@@ -15,13 +15,13 @@ Route::group(['prefix' => 'users', 'middleware' => 'auth:api'], function() {
 });
 
 Route::apiResource('events','EventController')
-    ->except('store', 'create')
+    ->except('destroy', 'create')
     ->middleware('auth:api');
 
 //только для создателя
-Route::group(['prefix' => 'events', 'middleware' => ['auth:api', 'isCreator']], function() {
-    Route::post('', 'EventController@store');
-    Route::put('{event}', 'EventController@udpate');
+Route::group(['prefix' => 'events/{event}', 'middleware' => ['auth:api', 'isCreator']], function() {
+    Route::delete('', 'EventController@destroy');
+    Route::put('', 'EventController@udpate');
 });
 
 Route::group(['prefix' => 'events/{event}', 'middleware' => 'auth:api'], function() {
