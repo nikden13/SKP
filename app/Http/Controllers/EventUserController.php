@@ -44,9 +44,18 @@ class EventUserController extends Controller
         $qr_user = $request->input('code');
         $qr_event = $event->code()->find($event->id)->only('code');
         if ($qr_event['code'] == $qr_user) {
-            $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => true]);
+            $user->events()->updateExistingPivot($event,
+                [
+                    'code' => $qr_user,
+                    'lock' => true,
+                    'presence' => true,
+                ]);
         } else {
-            $user->events()->updateExistingPivot($event, ['code' => $qr_user, 'presence' => false]);
+            $user->events()->updateExistingPivot($event,
+                [
+                    'code' => $qr_user,
+                    'lock' => true,
+                ]);
         }
         return response()->json(['message' => 'Answer added successfully'], 200);
     }
@@ -71,8 +80,18 @@ class EventUserController extends Controller
         }
 
         $count_true_answers = $this->check_answers($set_id, $true_answers, $user_answers); //проверка ответов
-        if ($count_true_answers >= $count_qustions * 0.8)
-            $user->events()->updateExistingPivot($event, ['presence' => true]);
+        if ($count_true_answers >= $count_qustions * 0.8) {
+            $user->events()->updateExistingPivot($event,
+                [
+                    'presence' => true,
+                    'lock' => true,
+                ]);
+        } else {
+            $user->events()->updateExistingPivot($event,
+                [
+                    'lock' => true,
+                ]);
+        }
         return response()->json(['message' => 'Answers added successfully'], 200);
     }
 

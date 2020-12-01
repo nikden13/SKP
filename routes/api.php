@@ -21,7 +21,7 @@ Route::apiResource('events','EventController')
 //только для создателя
 Route::group(['prefix' => 'events/{event}', 'middleware' => ['auth:api', 'isCreator']], function() {
     Route::delete('', 'EventController@destroy');
-    Route::put('', 'EventController@udpate');
+    Route::put('', 'EventController@update');
 });
 
 Route::group(['prefix' => 'events/{event}', 'middleware' => 'auth:api'], function() {
@@ -32,13 +32,13 @@ Route::group(['prefix' => 'events/{event}', 'middleware' => 'auth:api'], functio
         ->middleware('isParticipant');      //только для создателя или участника
     Route::post('users', 'EventUserController@add_user');
 
-    //только для создателя или участника и если проверка qr или каптча
+    //только для создателя или участника, если проверка qr или каптча и нет блокировки
     Route::post('code', 'EventUserController@add_code_user')
-        ->middleware(['isCreator', 'isCode']);
+        ->middleware(['isParticipant', 'lock', 'isCode']);
 
-    //только для создателя или участника и если проверка тест
+    //только для создателя или участника, если проверка тест и нет блокировки
     Route::post('answers', 'EventUserController@add_answers_user')
-        ->middleware(['isCreator','isTest']);
+        ->middleware(['isParticipant', 'lock', 'isTest']);
 });
 
 

@@ -9,7 +9,9 @@ class VisitedController extends Controller
 
     public function __invoke(Event $event)
     {
-        $users = $event->users->sortBy('second_name');
+        $users = $event->users
+            ->where('pivot.role', 'participant')
+            ->sortBy('second_name');
         $visitors = [];
         foreach ($users as $user) {
             $visitor = array_merge(

@@ -20,7 +20,7 @@ class Event extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class)->withPivot('role', 'code', 'presence');
+        return $this->belongsToMany(User::class)->withPivot('role', 'code', 'presence', 'lock');
     }
 
     public function test()

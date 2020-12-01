@@ -45,12 +45,22 @@ class EventController extends Controller
         } else {
             $this->create_test($event, $request);
         }
-        auth()->user()->events()->attach($event, ['role' => 'creator']);
+        auth()->user()->events()->attach($event, ['role' => 'creator', 'presence', true]);
         return response()->json(Event::find($event->id), 201);
     }
 
     public function update(Event $event, EventRequest $request)
     {
+        //обнуление результатов
+        foreach ($event->users as $user) {
+            $event->users()->updateExistingPivot($user,
+                [
+                    'code' => null,
+                    'presence' => false,
+                    'lock' => false,
+                ]);
+        }
+        //обновление
         if ($event->check_type != 'test' && $request->input('check_type') == 'test') {
             $event->update($request->all());
             $event->code()->delete();

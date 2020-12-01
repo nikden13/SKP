@@ -19,6 +19,7 @@ class CreateEventUserTable extends Migration
             $table->string('code')->nullable();
             $table->string('role')->default('participant');
             $table->boolean('presence')->default('false');
+            $table->boolean('lock')->default('false');
             $table->timestamps();
 
             $table->foreign('user_id')
