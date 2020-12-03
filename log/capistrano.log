@@ -1,0 +1,224 @@
+# Logfile created on 2020-12-02 22:34:54 +0700 by logger.rb/v1.4.2
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-02 22:34:54 +0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [d7c5796c] Running /usr/bin/env mkdir -p /tmp as gpo_1911@207.154.210.81
+ DEBUG [d7c5796c] Command: /usr/bin/env mkdir -p /tmp
+  INFO [d7c5796c] Finished in 2.031 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-SKP-production-nikita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-SKP-production-nikita.sh 100.0%
+  INFO [8c24af37] Running /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh as gpo_1911@207.154.210.81
+ DEBUG [8c24af37] Command: /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh
+  INFO [8c24af37] Finished in 0.738 seconds with exit status 0 (successful).
+  INFO [749f36e0] Running /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD as gpo_1911@207.154.210.81
+ DEBUG [749f36e0] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD )
+ DEBUG [749f36e0] 	0f8de54336d6d03647ec08e8a764d613873052f0	HEAD
+  INFO [749f36e0] Finished in 0.901 seconds with exit status 0 (successful).
+  INFO [f216f554] Running /usr/bin/env mkdir -p /var/www/SKP/shared /var/www/SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [f216f554] Command: /usr/bin/env mkdir -p /var/www/SKP/shared /var/www/SKP/releases
+ DEBUG [f216f554] 	mkdir: 
+ DEBUG [f216f554] 	cannot create directory '/var/www/SKP/shared'
+ DEBUG [f216f554] 	: Permission denied
+ DEBUG [f216f554] 	
+ DEBUG [f216f554] 	mkdir: 
+ DEBUG [f216f554] 	cannot create directory '/var/www/SKP/releases'
+ DEBUG [f216f554] 	: Permission denied
+ DEBUG [f216f554] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-02 22:38:03 +0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [abee61b3] Running /usr/bin/env mkdir -p /tmp as gpo_1911@207.154.210.81
+ DEBUG [abee61b3] Command: /usr/bin/env mkdir -p /tmp
+  INFO [abee61b3] Finished in 2.185 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-SKP-production-nikita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-SKP-production-nikita.sh 100.0%
+  INFO [9ddf69cd] Running /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh as gpo_1911@207.154.210.81
+ DEBUG [9ddf69cd] Command: /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh
+  INFO [9ddf69cd] Finished in 1.120 seconds with exit status 0 (successful).
+  INFO [df7510ee] Running /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD as gpo_1911@207.154.210.81
+ DEBUG [df7510ee] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD )
+ DEBUG [df7510ee] 	0f8de54336d6d03647ec08e8a764d613873052f0	HEAD
+  INFO [df7510ee] Finished in 0.919 seconds with exit status 0 (successful).
+  INFO [8fea5eb9] Running /usr/bin/env mkdir -p /var/www/SKP/shared /var/www/SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [8fea5eb9] Command: /usr/bin/env mkdir -p /var/www/SKP/shared /var/www/SKP/releases
+ DEBUG [8fea5eb9] 	mkdir: 
+ DEBUG [8fea5eb9] 	cannot create directory '/var/www/SKP/shared'
+ DEBUG [8fea5eb9] 	: Permission denied
+ DEBUG [8fea5eb9] 	
+ DEBUG [8fea5eb9] 	mkdir: 
+ DEBUG [8fea5eb9] 	cannot create directory '/var/www/SKP/releases'
+ DEBUG [8fea5eb9] 	: Permission denied
+ DEBUG [8fea5eb9] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-02 22:54:11 +0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [abd0a6ef] Running /usr/bin/env mkdir -p /tmp as gpo_1911@207.154.210.81
+ DEBUG [abd0a6ef] Command: /usr/bin/env mkdir -p /tmp
+  INFO [abd0a6ef] Finished in 2.313 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-SKP-production-nikita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-SKP-production-nikita.sh 100.0%
+  INFO [cb7744bf] Running /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh as gpo_1911@207.154.210.81
+ DEBUG [cb7744bf] Command: /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh
+  INFO [cb7744bf] Finished in 0.507 seconds with exit status 0 (successful).
+  INFO [0e4e3038] Running /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD as gpo_1911@207.154.210.81
+ DEBUG [0e4e3038] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD )
+ DEBUG [0e4e3038] 	0f8de54336d6d03647ec08e8a764d613873052f0	HEAD
+  INFO [0e4e3038] Finished in 1.225 seconds with exit status 0 (successful).
+  INFO [dddb7043] Running /usr/bin/env mkdir -p /SKP/shared /SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [dddb7043] Command: /usr/bin/env mkdir -p /SKP/shared /SKP/releases
+ DEBUG [dddb7043] 	mkdir: 
+ DEBUG [dddb7043] 	cannot create directory '/SKP'
+ DEBUG [dddb7043] 	: Permission denied
+ DEBUG [dddb7043] 	
+ DEBUG [dddb7043] 	mkdir: 
+ DEBUG [dddb7043] 	cannot create directory '/SKP'
+ DEBUG [dddb7043] 	: Permission denied
+ DEBUG [dddb7043] 	
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-02 22:56:21 +0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [9aa7f96b] Running /usr/bin/env mkdir -p /tmp as gpo_1911@207.154.210.81
+ DEBUG [9aa7f96b] Command: /usr/bin/env mkdir -p /tmp
+  INFO [9aa7f96b] Finished in 2.321 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-SKP-production-nikita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-SKP-production-nikita.sh 100.0%
+  INFO [9a2ca09d] Running /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh as gpo_1911@207.154.210.81
+ DEBUG [9a2ca09d] Command: /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh
+  INFO [9a2ca09d] Finished in 0.601 seconds with exit status 0 (successful).
+  INFO [20519dc5] Running /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD as gpo_1911@207.154.210.81
+ DEBUG [20519dc5] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD )
+ DEBUG [20519dc5] 	0f8de54336d6d03647ec08e8a764d613873052f0	HEAD
+  INFO [20519dc5] Finished in 0.916 seconds with exit status 0 (successful).
+  INFO [009291f7] Running /usr/bin/env mkdir -p /home/gpo_1911/SKP/shared /home/gpo_1911/SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [009291f7] Command: /usr/bin/env mkdir -p /home/gpo_1911/SKP/shared /home/gpo_1911/SKP/releases
+  INFO [009291f7] Finished in 0.608 seconds with exit status 0 (successful).
+ DEBUG [c2936924] Running [ -f /home/gpo_1911/SKP/current/REVISION ] as gpo_1911@207.154.210.81
+ DEBUG [c2936924] Command: [ -f /home/gpo_1911/SKP/current/REVISION ]
+ DEBUG [c2936924] Finished in 0.614 seconds with exit status 1 (failed).
+ DEBUG [d93c36d2] Running [ -f /home/gpo_1911/SKP/repo/HEAD ] as gpo_1911@207.154.210.81
+ DEBUG [d93c36d2] Command: [ -f /home/gpo_1911/SKP/repo/HEAD ]
+ DEBUG [d93c36d2] Finished in 0.611 seconds with exit status 1 (failed).
+ DEBUG [b3b3289b] Running if test ! -d /home/gpo_1911/SKP; then echo "Directory does not exist '/home/gpo_1911/SKP'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [b3b3289b] Command: if test ! -d /home/gpo_1911/SKP; then echo "Directory does not exist '/home/gpo_1911/SKP'" 1>&2; false; fi
+ DEBUG [b3b3289b] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [93d5d7b4] Running /usr/bin/env git clone --mirror https://github.com/nikden13/SKP /home/gpo_1911/SKP/repo as gpo_1911@207.154.210.81
+ DEBUG [93d5d7b4] Command: cd /home/gpo_1911/SKP && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git clone --mirror https://github.com/nikden13/SKP /home/gpo_1911/SKP/repo )
+ DEBUG [93d5d7b4] 	Cloning into bare repository '/home/gpo_1911/SKP/repo'...
+  INFO [93d5d7b4] Finished in 1.327 seconds with exit status 0 (successful).
+ DEBUG [f0978b98] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [f0978b98] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [f0978b98] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [d13165d2] Running /usr/bin/env git remote set-url origin https://github.com/nikden13/SKP as gpo_1911@207.154.210.81
+ DEBUG [d13165d2] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git remote set-url origin https://github.com/nikden13/SKP )
+  INFO [d13165d2] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [a8eb4938] Running /usr/bin/env git remote update --prune as gpo_1911@207.154.210.81
+ DEBUG [a8eb4938] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [a8eb4938] 	Fetching origin
+  INFO [a8eb4938] Finished in 0.918 seconds with exit status 0 (successful).
+ DEBUG [17038a0b] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [17038a0b] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [17038a0b] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [13615854] Running /usr/bin/env mkdir -p /home/gpo_1911/SKP/releases/20201202155628 as gpo_1911@207.154.210.81
+ DEBUG [13615854] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env mkdir -p /home/gpo_1911/SKP/releases/20201202155628 )
+  INFO [13615854] Finished in 0.611 seconds with exit status 0 (successful).
+  INFO [44ed75cb] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/gpo_1911/SKP/releases/20201202155628 as gpo_1911@207.154.210.81
+ DEBUG [44ed75cb] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/gpo_1911/SKP/releases/20201202155628 )
+  INFO [44ed75cb] Finished in 0.611 seconds with exit status 0 (successful).
+ DEBUG [fb823332] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [fb823332] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [fb823332] Finished in 0.611 seconds with exit status 0 (successful).
+ DEBUG [555b1d40] Running /usr/bin/env git rev-list --max-count=1 master as gpo_1911@207.154.210.81
+ DEBUG [555b1d40] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [555b1d40] 	0f8de54336d6d03647ec08e8a764d613873052f0
+ DEBUG [555b1d40] Finished in 0.613 seconds with exit status 0 (successful).
+ DEBUG [fb8f85c6] Running if test ! -d /home/gpo_1911/SKP/releases/20201202155628; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155628'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [fb8f85c6] Command: if test ! -d /home/gpo_1911/SKP/releases/20201202155628; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155628'" 1>&2; false; fi
+ DEBUG [fb8f85c6] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [3808ef6d] Running /usr/bin/env echo "0f8de54336d6d03647ec08e8a764d613873052f0" > REVISION as gpo_1911@207.154.210.81
+ DEBUG [3808ef6d] Command: cd /home/gpo_1911/SKP/releases/20201202155628 && /usr/bin/env echo "0f8de54336d6d03647ec08e8a764d613873052f0" > REVISION
+  INFO [3808ef6d] Finished in 0.617 seconds with exit status 0 (successful).
+ DEBUG [e17dbbcb] Running if test ! -d /home/gpo_1911/SKP/releases/20201202155628; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155628'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [e17dbbcb] Command: if test ! -d /home/gpo_1911/SKP/releases/20201202155628; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155628'" 1>&2; false; fi
+ DEBUG [e17dbbcb] Finished in 0.610 seconds with exit status 0 (successful).
+  INFO [0265c571] Running /usr/bin/env composer install —no-dev —quiet as gpo_1911@207.154.210.81
+ DEBUG [0265c571] Command: cd /home/gpo_1911/SKP/releases/20201202155628 && /usr/bin/env composer install —no-dev —quiet
+ DEBUG [0265c571] 	/usr/bin/env: 'composer': No such file or directory
+  INFO ---------------------------------------------------------------------------
+  INFO START 2020-12-02 22:58:55 +0700 cap production deploy
+  INFO ---------------------------------------------------------------------------
+  INFO [a9893303] Running /usr/bin/env mkdir -p /tmp as gpo_1911@207.154.210.81
+ DEBUG [a9893303] Command: /usr/bin/env mkdir -p /tmp
+  INFO [a9893303] Finished in 4.325 seconds with exit status 0 (successful).
+ DEBUG Uploading /tmp/git-ssh-SKP-production-nikita.sh 0.0%
+  INFO Uploading /tmp/git-ssh-SKP-production-nikita.sh 100.0%
+  INFO [fa70cf34] Running /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh as gpo_1911@207.154.210.81
+ DEBUG [fa70cf34] Command: /usr/bin/env chmod 700 /tmp/git-ssh-SKP-production-nikita.sh
+  INFO [fa70cf34] Finished in 1.479 seconds with exit status 0 (successful).
+  INFO [e5167c8d] Running /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD as gpo_1911@207.154.210.81
+ DEBUG [e5167c8d] Command: ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git ls-remote https://github.com/nikden13/SKP HEAD )
+ DEBUG [e5167c8d] 	0f8de54336d6d03647ec08e8a764d613873052f0	HEAD
+  INFO [e5167c8d] Finished in 0.824 seconds with exit status 0 (successful).
+  INFO [033f4c90] Running /usr/bin/env mkdir -p /home/gpo_1911/SKP/shared /home/gpo_1911/SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [033f4c90] Command: /usr/bin/env mkdir -p /home/gpo_1911/SKP/shared /home/gpo_1911/SKP/releases
+  INFO [033f4c90] Finished in 0.324 seconds with exit status 0 (successful).
+ DEBUG [9fa8493d] Running [ -f /home/gpo_1911/SKP/current/REVISION ] as gpo_1911@207.154.210.81
+ DEBUG [9fa8493d] Command: [ -f /home/gpo_1911/SKP/current/REVISION ]
+ DEBUG [9fa8493d] Finished in 0.440 seconds with exit status 1 (failed).
+ DEBUG [ad3fc1ba] Running [ -f /home/gpo_1911/SKP/repo/HEAD ] as gpo_1911@207.154.210.81
+ DEBUG [ad3fc1ba] Command: [ -f /home/gpo_1911/SKP/repo/HEAD ]
+ DEBUG [ad3fc1ba] Finished in 1.719 seconds with exit status 0 (successful).
+  INFO The repository mirror is at /home/gpo_1911/SKP/repo
+ DEBUG [fd135d1a] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [fd135d1a] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [fd135d1a] Finished in 0.525 seconds with exit status 0 (successful).
+  INFO [73a0b32a] Running /usr/bin/env git remote set-url origin https://github.com/nikden13/SKP as gpo_1911@207.154.210.81
+ DEBUG [73a0b32a] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git remote set-url origin https://github.com/nikden13/SKP )
+  INFO [73a0b32a] Finished in 0.329 seconds with exit status 0 (successful).
+  INFO [ed16f793] Running /usr/bin/env git remote update --prune as gpo_1911@207.154.210.81
+ DEBUG [ed16f793] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git remote update --prune )
+ DEBUG [ed16f793] 	Fetching origin
+  INFO [ed16f793] Finished in 0.750 seconds with exit status 0 (successful).
+ DEBUG [bbd94815] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [bbd94815] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [bbd94815] Finished in 0.317 seconds with exit status 0 (successful).
+  INFO [1128412e] Running /usr/bin/env mkdir -p /home/gpo_1911/SKP/releases/20201202155905 as gpo_1911@207.154.210.81
+ DEBUG [1128412e] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env mkdir -p /home/gpo_1911/SKP/releases/20201202155905 )
+  INFO [1128412e] Finished in 0.437 seconds with exit status 0 (successful).
+  INFO [8f3a2705] Running /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/gpo_1911/SKP/releases/20201202155905 as gpo_1911@207.154.210.81
+ DEBUG [8f3a2705] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git archive master | /usr/bin/env tar -x -f - -C /home/gpo_1911/SKP/releases/20201202155905 )
+  INFO [8f3a2705] Finished in 0.753 seconds with exit status 0 (successful).
+ DEBUG [d1d7cedb] Running if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [d1d7cedb] Command: if test ! -d /home/gpo_1911/SKP/repo; then echo "Directory does not exist '/home/gpo_1911/SKP/repo'" 1>&2; false; fi
+ DEBUG [d1d7cedb] Finished in 0.468 seconds with exit status 0 (successful).
+ DEBUG [63b0e06b] Running /usr/bin/env git rev-list --max-count=1 master as gpo_1911@207.154.210.81
+ DEBUG [63b0e06b] Command: cd /home/gpo_1911/SKP/repo && ( export GIT_ASKPASS="/bin/echo" GIT_SSH="/tmp/git-ssh-SKP-production-nikita.sh" ; /usr/bin/env git rev-list --max-count=1 master )
+ DEBUG [63b0e06b] 	0f8de54336d6d03647ec08e8a764d613873052f0
+ DEBUG [63b0e06b] Finished in 0.900 seconds with exit status 0 (successful).
+ DEBUG [5767c697] Running if test ! -d /home/gpo_1911/SKP/releases/20201202155905; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155905'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [5767c697] Command: if test ! -d /home/gpo_1911/SKP/releases/20201202155905; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155905'" 1>&2; false; fi
+ DEBUG [5767c697] Finished in 0.363 seconds with exit status 0 (successful).
+  INFO [34b1312a] Running /usr/bin/env echo "0f8de54336d6d03647ec08e8a764d613873052f0" > REVISION as gpo_1911@207.154.210.81
+ DEBUG [34b1312a] Command: cd /home/gpo_1911/SKP/releases/20201202155905 && /usr/bin/env echo "0f8de54336d6d03647ec08e8a764d613873052f0" > REVISION
+  INFO [34b1312a] Finished in 0.850 seconds with exit status 0 (successful).
+ DEBUG [2aeef5fa] Running if test ! -d /home/gpo_1911/SKP/releases/20201202155905; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155905'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [2aeef5fa] Command: if test ! -d /home/gpo_1911/SKP/releases/20201202155905; then echo "Directory does not exist '/home/gpo_1911/SKP/releases/20201202155905'" 1>&2; false; fi
+ DEBUG [2aeef5fa] Finished in 0.440 seconds with exit status 0 (successful).
+  INFO [bcfff602] Running /usr/bin/env chmod u+x artisan as gpo_1911@207.154.210.81
+ DEBUG [bcfff602] Command: cd /home/gpo_1911/SKP/releases/20201202155905 && /usr/bin/env chmod u+x artisan
+  INFO [bcfff602] Finished in 0.956 seconds with exit status 0 (successful).
+  INFO [f9e7597c] Running /usr/bin/env ln -s /home/gpo_1911/SKP/releases/20201202155905 /home/gpo_1911/SKP/releases/current as gpo_1911@207.154.210.81
+ DEBUG [f9e7597c] Command: /usr/bin/env ln -s /home/gpo_1911/SKP/releases/20201202155905 /home/gpo_1911/SKP/releases/current
+  INFO [f9e7597c] Finished in 0.459 seconds with exit status 0 (successful).
+  INFO [e0ea489a] Running /usr/bin/env mv /home/gpo_1911/SKP/releases/current /home/gpo_1911/SKP as gpo_1911@207.154.210.81
+ DEBUG [e0ea489a] Command: /usr/bin/env mv /home/gpo_1911/SKP/releases/current /home/gpo_1911/SKP
+  INFO [e0ea489a] Finished in 0.324 seconds with exit status 0 (successful).
+ DEBUG [ebed404b] Running /usr/bin/env ls -x /home/gpo_1911/SKP/releases as gpo_1911@207.154.210.81
+ DEBUG [ebed404b] Command: /usr/bin/env ls -x /home/gpo_1911/SKP/releases
+ DEBUG [ebed404b] 	20201202155628	20201202155905
+ DEBUG [ebed404b] Finished in 0.398 seconds with exit status 0 (successful).
+ DEBUG [9ae357e5] Running if test ! -d /home/gpo_1911/SKP/releases; then echo "Directory does not exist '/home/gpo_1911/SKP/releases'" 1>&2; false; fi as gpo_1911@207.154.210.81
+ DEBUG [9ae357e5] Command: if test ! -d /home/gpo_1911/SKP/releases; then echo "Directory does not exist '/home/gpo_1911/SKP/releases'" 1>&2; false; fi
+ DEBUG [9ae357e5] Finished in 0.859 seconds with exit status 0 (successful).
+  INFO [f4bb92be] Running /usr/bin/env echo "Branch master (at 0f8de54336d6d03647ec08e8a764d613873052f0) deployed as release 20201202155905 by nikita" >> /home/gpo_1911/SKP/revisions.log as gpo_1911@207.154.210.81
+ DEBUG [f4bb92be] Command: cd /home/gpo_1911/SKP/releases && /usr/bin/env echo "Branch master (at 0f8de54336d6d03647ec08e8a764d613873052f0) deployed as release 20201202155905 by nikita" >> /home/gpo_1911/SKP/revisions.log
+  INFO [f4bb92be] Finished in 0.465 seconds with exit status 0 (successful).

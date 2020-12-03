@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnswerRequest;
 use App\Models\Event;
 use App\Models\Test;
-use Exception;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 

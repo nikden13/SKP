@@ -19,7 +19,7 @@ class EventController extends Controller
             $creator = $event->users
                 ->where('pivot.role', 'creator')
                 ->first()
-                ->only(['first_name', 'second_name', 'middle_name']);
+                ->only(['name', 'surname', 'patronymic']);
             array_push($events_with_creator, collect($event)
                 ->except('users')
                 ->union(['creator' => $creator]));
@@ -32,7 +32,7 @@ class EventController extends Controller
         $creator = $event->users
             ->where('pivot.role', 'creator')
             ->first()
-            ->only(['first_name', 'second_name', 'middle_name']);
+            ->only(['name', 'surname', 'patronymic']);
         $event = collect($event)->except('users');
         return response()->json($event->union(['creator' => $creator]), 200);
     }
@@ -45,7 +45,7 @@ class EventController extends Controller
         } else {
             $this->create_test($event, $request);
         }
-        auth()->user()->events()->attach($event, ['role' => 'creator', 'presence', true]);
+        auth()->user()->events()->attach($event, ['role' => 'creator', 'presence' => true]);
         return response()->json(Event::find($event->id), 201);
     }
 
