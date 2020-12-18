@@ -92,6 +92,18 @@ class EventController extends Controller
         $event->code()->create(['code' => $request->input('code')]);
     }
 
+    public function getEventsRoot(Request $request)
+    {
+        $events = auth()->user()->events->sortBy('date');
+        $events_with_code = [];
+        foreach ($events as $event) {
+            array_push($events_with_code, collect($event)
+                ->except('pivot')
+                ->union(['code' => $event->code->code]));
+        }
+        return response()->json($events_with_code, 200);
+    }
+
     private function create_test($event, $request)
     {
         $test = $event->test()->create([

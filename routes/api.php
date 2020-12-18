@@ -18,6 +18,8 @@ Route::apiResource('events','EventController')
     ->except('destroy', 'create')
     ->middleware('auth:api');
 
+Route::get('events/root', 'EventController@getEventsRoot')->middleware('auth:api');
+
 //только для создателя
 Route::group(['prefix' => 'events/{event}', 'middleware' => ['auth:api', 'isCreator']], function() {
     Route::delete('', 'EventController@destroy');
