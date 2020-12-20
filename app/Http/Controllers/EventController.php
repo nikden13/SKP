@@ -97,9 +97,17 @@ class EventController extends Controller
         $events = auth()->user()->events->sortBy('date');
         $events_with_code = [];
         foreach ($events as $event) {
-            array_push($events_with_code, collect($event)
+            if ($event->code) {
+                array_push($events_with_code, collect($event)
                 ->except('pivot')
                 ->union(['code' => $event->code->code]));
+            }
+            else {
+                array_push($events_with_code, collect($event)
+                    ->except('pivot')
+                    ->except('code')
+                );
+            }
         }
         return response()->json($events_with_code, 200);
     }
