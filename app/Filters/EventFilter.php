@@ -17,6 +17,11 @@ class EventFilter extends QueryFilter
         $this->builder = $this->builder->where('type_event', $value);
     }
 
+    protected function check_type($value)
+    {
+        $this->builder = $this->builder->where('check_type', $value);
+    }
+
     protected function location($value)
     {
         $this->builder = $this->builder->where('location', $value);

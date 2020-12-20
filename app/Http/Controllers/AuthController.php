@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
 use App\Models\User;
+use App\Notifications\VerifyEmailNotification;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller
@@ -13,7 +14,11 @@ class AuthController extends Controller
         $user = new User;
         $user->email = $request->input('email');
         $user->password = bcrypt($request->input('password'));
+
         $user->save();
+
+        $user->notify(new VerifyEmailNotification($user));
+
         return response()->json(['message' => 'You are were registered successfully'], 201);
     }
 
@@ -32,4 +37,12 @@ class AuthController extends Controller
         auth()->user()->token()->revoke();
         return response()->json(['message' => 'You are logged out'], 200);
     }
+
+    public function verify(Request $request, User $user)
+    {
+        $user->verified = true;
+        $user->save();
+        return redirect('login');
+    }
+
 }

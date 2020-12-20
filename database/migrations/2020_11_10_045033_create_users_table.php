@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('surname')->nullable();
             $table->string('patronymic')->nullable();
             $table->string('group')->nullable();
+
+            $table->
             $table->timestamps();
         });
     }

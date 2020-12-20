@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('verify-email/{user}', 'AuthController@verify')
+    ->middleware('signed')
+    ->name('auth.verify');
 
 Route::post('register', 'AuthController@register');
 Route::post('login', 'AuthController@login');
